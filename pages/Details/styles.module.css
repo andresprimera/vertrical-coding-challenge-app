@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+
+  flex-direction: row;
+  width: 100%;
+  flex: 1;
+  border-bottom: 1px solid var(--color-gray);
+}
+
+.col1 {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col2 {
+  flex: 2;
+  margin: 20px;
+}
+
+.title {
+  width: 100%;
+  border-bottom: 1px solid var(--color-gray);
+}
+
+.filler {
+  flex: 1;
+}

@@ -1,17 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 
 import Head from "next/head";
-import Image from "next/image";
 
-import { SearchField, Header } from "components";
+import { SearchField, Header, MainContainer } from "components";
 
 import styles from "./styles.module.css";
 import { useGetScreenSize } from "hooks/useGetScreenSize";
-import { HEADER_HEIGHT } from "metrics";
-import ChevronRightIcon from "public/svgs/ChevronRightIcon";
 import { SearchResults } from "./SearchResults";
-
-import { ResponseUI } from "./types";
+import { ResponseUI } from "../../types";
 
 const dummyData = [
   {
@@ -100,7 +96,7 @@ const dummyData = [
   },
 ];
 
-export const HomeScreen = () => {
+export default function HomeScreen() {
   const [text, setText] = useState("");
   const element = useRef(null);
   const { screenSize } = useGetScreenSize();
@@ -118,10 +114,7 @@ export const HomeScreen = () => {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Header />
-      <main
-        className={styles.main}
-        style={{ height: screenSize.height - HEADER_HEIGHT }}
-      >
+      <MainContainer>
         <div className={styles.searchSection}>
           <h3>Search Bar</h3>
           <SearchField
@@ -138,7 +131,7 @@ export const HomeScreen = () => {
 
           <SearchResults data={data} />
         </div>
-      </main>
+      </MainContainer>
     </div>
   );
-};
+}

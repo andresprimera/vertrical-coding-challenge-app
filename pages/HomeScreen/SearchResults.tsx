@@ -1,11 +1,9 @@
 import React from "react";
 import Link from "next/link";
-
-import ChevronRightIcon from "public/svgs/ChevronRightIcon";
-
+import { ResponseCard } from "./ResponseCard";
 import styles from "./styles.module.css";
 
-import { ResponseUI } from "./types";
+import { ResponseUI } from "types";
 
 export const SearchResults = ({ data }: { data: ResponseUI[] | [] }) => {
   return (
@@ -16,20 +14,8 @@ export const SearchResults = ({ data }: { data: ResponseUI[] | [] }) => {
         </div>
       ) : (
         data.map((item, index) => {
-          const { photo, id, title, shortDescription } = item;
           return (
-            <div key={`${id}-${index}`} className={styles.card}>
-              {/***FIRST COL 20% WIDTH */}
-              <div className={styles.col1}>{photo}</div>
-              {/**SECOND COL 80% WIDTH */}
-              <div className={styles.col2}>
-                <Link className={styles.cardTitle} href={"#"}>
-                  {title}
-                </Link>
-                <p className={styles.cardDescription}>{shortDescription}</p>
-              </div>
-              <ChevronRightIcon color={"var(--color-primary)"} />
-            </div>
+            <ResponseCard key={`${item.id}-${index}`} index={index} {...item} />
           );
         })
       )}

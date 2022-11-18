@@ -1,1 +1,3 @@
-export { HomeScreen } from "./HomeScreen";
+import HomeScreen from "./HomeScreen";
+
+export default HomeScreen;

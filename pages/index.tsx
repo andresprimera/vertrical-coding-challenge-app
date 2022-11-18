@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { LoadingScreen } from "./Loading";
 
-import { HomeScreen } from "./HomeScreen";
+import HomeScreen from "./HomeScreen";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
