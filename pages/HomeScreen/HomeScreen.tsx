@@ -1,4 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useContext } from "react";
+
+import { StoreContext } from "context";
 
 import Head from "next/head";
 
@@ -7,104 +9,14 @@ import { SearchField, Header, MainContainer } from "components";
 import styles from "./styles.module.css";
 import { useGetScreenSize } from "hooks/useGetScreenSize";
 import { SearchResults } from "./SearchResults";
-import { ResponseUI } from "../../types";
-
-const dummyData = [
-  {
-    id: "0",
-    title: "title 1",
-    photo: "photo",
-    description: "description",
-    shortDescription: "Short Description",
-  },
-  {
-    id: "1",
-    title: "title 2",
-    photo: "photo",
-    description: "description",
-    shortDescription: "Short Description",
-  },
-  {
-    id: "2",
-    title: "title",
-    photo: "photo",
-    description: "description",
-    shortDescription: "Short Description",
-  },
-  {
-    id: "3",
-    title: "title",
-    photo: "photo",
-    description: "description",
-    shortDescription: "Short Description",
-  },
-  {
-    id: "4",
-    title: "title",
-    photo: "photo",
-    description: "description",
-    shortDescription: "Short Description",
-  },
-  {
-    id: "5",
-    title: "title",
-    photo: "photo",
-    description: "description",
-    shortDescription: "Short Description",
-  },
-  {
-    id: "6",
-    title: "title",
-    photo: "photo",
-    description: "description",
-    shortDescription: "Short Description",
-  },
-  {
-    id: "7",
-    title: "title",
-    photo: "photo",
-    description: "description",
-    shortDescription: "Short Description",
-  },
-  {
-    id: "8",
-    title: "title",
-    photo: "photo",
-    description: "description",
-    shortDescription: "Short Description",
-  },
-  {
-    id: "9",
-    title: "title",
-    photo: "photo",
-    description: "description",
-    shortDescription: "Short Description",
-  },
-  {
-    id: "10",
-    title: "title",
-    photo: "photo",
-    description: "description",
-    shortDescription: "Short Description",
-  },
-  {
-    id: "11",
-    title: "title",
-    photo: "photo",
-    description: "description",
-    shortDescription: "Short Description",
-  },
-];
 
 export default function HomeScreen() {
   const [text, setText] = useState("");
   const element = useRef(null);
-  const { screenSize } = useGetScreenSize();
-  const [data, setData] = useState<ResponseUI[] | []>([]);
 
-  const handlePerformSearch = () => {
-    setData(dummyData);
-  };
+  const { state } = useContext<any>(StoreContext);
+  const { dataState } = state;
+  const { data } = dataState;
 
   return (
     <div className={styles.container}>
@@ -117,11 +29,7 @@ export default function HomeScreen() {
       <MainContainer>
         <div className={styles.searchSection}>
           <h3>Search Bar</h3>
-          <SearchField
-            text={text}
-            setText={setText}
-            handlePerformSearch={handlePerformSearch}
-          />
+          <SearchField text={text} setText={setText} />
         </div>
 
         <div className={styles.innerContainer}>

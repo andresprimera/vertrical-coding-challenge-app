@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ResponseCard } from "./ResponseCard";
 import styles from "./styles.module.css";
 
-import { ResponseUI } from "types";
+import { ResponseUI } from "context/data/interfaces";
 
 export const SearchResults = ({ data }: { data: ResponseUI[] | [] }) => {
   return (

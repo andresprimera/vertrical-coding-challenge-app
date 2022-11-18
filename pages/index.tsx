@@ -1,17 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 
 import { LoadingScreen } from "./Loading";
+import { StoreContext } from "context";
+
+import { handleFirstLoadFinished } from "context/data/handlers";
 
 import HomeScreen from "./HomeScreen";
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
+  const { state, dataDispatch } = useContext<any>(StoreContext);
+  const { dataState } = state;
+  const { firstLoad } = dataState;
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-  }, []);
+    if (firstLoad) {
+      setTimeout(() => {
+        handleFirstLoadFinished(dataDispatch);
+      }, 1500);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [firstLoad]);
 
-  return loading ? <LoadingScreen /> : <HomeScreen />;
+  return firstLoad ? <LoadingScreen /> : <HomeScreen />;
 }

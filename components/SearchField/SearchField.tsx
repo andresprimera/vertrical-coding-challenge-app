@@ -1,5 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import CloseIcon from "public/svgs/CloseIcon";
+
+import { StoreContext } from "context";
+
+import { handlePerformSearch } from "context/data/handlers";
 
 import { Button } from "./Button";
 
@@ -8,18 +12,15 @@ import styles from "./styles.module.css";
 interface props {
   text: string;
   setText: React.Dispatch<React.SetStateAction<string>>;
-  handlePerformSearch: () => void;
 }
-const performSearch = () => {
-  console.log("perform search");
-};
 
-export const SearchField = ({ text, setText, handlePerformSearch }: props) => {
+export const SearchField = ({ text, setText }: props) => {
   const [showDeleteButton, setShowDeleteButton] = useState(true);
+  const { dataDispatch } = useContext<any>(StoreContext);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      handlePerformSearch();
+      handlePerformSearch(dataDispatch);
     }
   };
 
@@ -39,7 +40,7 @@ export const SearchField = ({ text, setText, handlePerformSearch }: props) => {
       {showDeleteButton ? (
         <CloseIcon onClick={() => setText("")} style={{ marginRight: 10 }} />
       ) : null}
-      <Button onPress={() => handlePerformSearch()} />
+      <Button onPress={() => handlePerformSearch(dataDispatch)} />
     </div>
   );
 };

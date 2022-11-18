@@ -24,7 +24,7 @@ export const ResponseCard = ({
       <div className={styles.col1}>{photo}</div>
       {/**SECOND COL 80% WIDTH */}
       <div className={styles.col2}>
-        <Link className={styles.cardTitle} href={"/Details"}>
+        <Link className={styles.cardTitle} href={`/Details?selection=${id}`}>
           {title}
         </Link>
         <p className={styles.cardDescription}>{shortDescription}</p>

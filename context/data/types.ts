@@ -1,0 +1,4 @@
+export const SET_DATA = "SET_DATA";
+export const UPDATE_FIRST_LOAD = "UPDATE_FIRST_LOAD";
+
+export const PERFORM_SEARCH = "PERFORM_SEARCH";
