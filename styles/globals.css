@@ -15,12 +15,9 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+:root {
+  --color-primary: rgb(71, 127, 247);
+  --color-primary-complement: rgb(202, 238, 253);
+  --color-secondary: rgb(123, 160, 163);
+  --color-secondary-complement: rgb(213, 233, 231);
 }
