@@ -1,13 +1,13 @@
 import React from "react";
 
-import { ResponseUI } from "context/movies/interfaces";
+import { MovieUI } from "context/movies/interfaces";
 
 import styles from "./styles.module.css";
 
 export default function MovieSectionSection({
   selectedMovie,
 }: {
-  selectedMovie: ResponseUI;
+  selectedMovie: MovieUI;
 }) {
   return (
     <div className={styles.col2}>

@@ -13,24 +13,24 @@
 
 @media (min-width: 960px) {
   .container {
-    width: 90%;
+    width: 90vw;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
-    width: 80%;
+    width: 80vw;
   }
 }
 
 @media (min-width: 1366px) {
   .container {
-    width: 70%;
+    width: 70vw;
   }
 }
 
 @media (min-width: 1920px) {
   .container {
-    width: 60%;
+    width: 60vw;
   }
 }

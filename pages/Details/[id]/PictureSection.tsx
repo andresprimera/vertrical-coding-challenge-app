@@ -1,14 +1,14 @@
 import React from "react";
 import Image from "next/image";
 
-import { ResponseUI } from "context/movies/interfaces";
+import { MovieUI } from "context/movies/interfaces";
 
 import styles from "./styles.module.css";
 
 export default function PictureSection({
   selectedMovie,
 }: {
-  selectedMovie: ResponseUI;
+  selectedMovie: MovieUI;
 }) {
   return (
     <div className={styles.col1}>

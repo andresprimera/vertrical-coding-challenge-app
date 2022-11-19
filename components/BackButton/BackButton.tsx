@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 
 import styles from "./styles.module.css";
-import ChevronLeftIcon from "public/svgs/ChevronLeftIcon";
+import ChevronLeftIcon from "assets/svgs/ChevronLeftIcon";
 
 export const BackButton = () => {
   const router = useRouter();

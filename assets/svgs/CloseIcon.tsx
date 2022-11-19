@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const CloseIcon = (props: any) => (
+const CloseIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg height={20} width={20} style={props.style} {...props}>
     <path
       fill={props.color ? props.color : "gray"}

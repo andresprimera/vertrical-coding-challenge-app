@@ -1,5 +1,4 @@
 export const SET_MOVIES = "SET_DATA";
 export const UPDATE_FIRST_LOAD = "UPDATE_FIRST_LOAD";
 export const SET_LOADING = "SET_LOADING";
-
 export const PERFORM_SEARCH = "PERFORM_SEARCH";

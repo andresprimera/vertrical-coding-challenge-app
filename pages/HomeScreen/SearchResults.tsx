@@ -2,30 +2,17 @@ import React from "react";
 
 import ResponseCard from "./ResponseCard";
 
-import { ResponseUI } from "context/movies/interfaces";
+import { MovieUI } from "context/movies/interfaces";
 
 import styles from "./styles.module.css";
 
-export default function SearchResults({
-  movies,
-}: {
-  movies: ResponseUI[] | [];
-}) {
-  if (!movies) {
-    return (
-      <div className={styles.noInfoContainer}>
-        <h3 className={styles.noInfoText}>There is no info to show</h3>
-      </div>
-    );
-  }
+export default function SearchResults({ movies }: { movies: MovieUI[] | [] }) {
+  let renderMovies = false;
+  renderMovies = movies && movies.length !== 0;
 
   return (
     <div className={styles.searchResults}>
-      {movies.length === 0 ? (
-        <div className={styles.noInfoContainer}>
-          <h3 className={styles.noInfoText}>There is no info to show</h3>
-        </div>
-      ) : (
+      {renderMovies ? (
         movies.map((item, index) => {
           return (
             <ResponseCard
@@ -35,6 +22,10 @@ export default function SearchResults({
             />
           );
         })
+      ) : (
+        <div className={styles.noInfoContainer}>
+          <h3 className={styles.noInfoText}>{"There is no info to show"}</h3>
+        </div>
       )}
     </div>
   );

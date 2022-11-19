@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import CloseIcon from "public/svgs/CloseIcon";
+import CloseIcon from "assets/svgs/CloseIcon";
 
 import { StoreContext } from "context";
 
@@ -8,6 +8,7 @@ import { handlePerformSearch } from "context/movies/handlers";
 import { Button } from "./Button";
 
 import styles from "./styles.module.css";
+import { DispatchUI, StoreUI } from "context/movies/interfaces";
 
 interface props {
   text: string;
@@ -16,11 +17,14 @@ interface props {
 
 export const SearchField = ({ text, setText }: props) => {
   const [showDeleteButton, setShowDeleteButton] = useState(true);
-  const { moviesDispatch } = useContext<any>(StoreContext);
+  const { moviesDispatch } = useContext<StoreUI>(StoreContext);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      handlePerformSearch({ dispatch: moviesDispatch, query: text });
+      handlePerformSearch({
+        dispatch: moviesDispatch as React.Dispatch<DispatchUI>,
+        query: text,
+      });
     }
   };
 
@@ -42,7 +46,10 @@ export const SearchField = ({ text, setText }: props) => {
       ) : null}
       <Button
         onPress={() =>
-          handlePerformSearch({ dispatch: moviesDispatch, query: text })
+          handlePerformSearch({
+            dispatch: moviesDispatch as React.Dispatch<DispatchUI>,
+            query: text,
+          })
         }
       />
     </div>

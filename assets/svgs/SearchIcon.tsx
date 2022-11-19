@@ -1,9 +1,9 @@
 import * as React from "react";
 
-const SearchIcon = (props: any) => (
+const SearchIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    height={props.heigth ? props.height : 48}
+    height={props.height ? props.height : 48}
     width={props.width ? props.width : 48}
     viewBox="0 0 48 48"
     {...props}

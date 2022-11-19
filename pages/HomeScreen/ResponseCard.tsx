@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import Image from "next/image";
 
-import ChevronRightIcon from "public/svgs/ChevronRightIcon";
+import ChevronRightIcon from "assets/svgs/ChevronRightIcon";
 
 import styles from "./styles.module.css";
 
@@ -23,8 +23,8 @@ export default function ResponseCard({
   index,
 }: Props) {
   const loader = useCallback(() => {
-    const pictureQuality = 20;
-    return `${photo}?q=${pictureQuality}`;
+    const pictureQuality = 70;
+    return `${photo}?w=${80}q=${pictureQuality}`;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -44,7 +44,7 @@ export default function ResponseCard({
       {/**SECOND COL 80% WIDTH */}
       <div className={styles.col2}>
         <div className={styles.cardTitle}>
-          <Link href={`/Details?selection=${_id}`}>{title}</Link>
+          <Link href={`/Details/${_id}`}>{title}</Link>
         </div>
         <p className={styles.cardDescription}>{shortDescription}</p>
       </div>

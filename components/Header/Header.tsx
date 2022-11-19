@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "public/svgs/logo";
+import Logo from "assets/svgs/logo";
 
 import styles from "./styles.module.css";
 import { useGetScreenSize } from "hooks/useGetScreenSize";

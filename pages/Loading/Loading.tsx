@@ -1,6 +1,6 @@
 import React from "react";
 
-import Logo from "../../public/svgs/logo";
+import Logo from "../../assets/svgs/logo";
 
 import { useGetScreenSize } from "hooks/useGetScreenSize";
 
@@ -9,7 +9,7 @@ import styles from "./styles.module.css";
 export default function LoadingScreen() {
   const { screenSize } = useGetScreenSize();
 
-  const logoWidth = screenSize.width < 600 ? "70%" : 400;
+  const logoWidth = screenSize.width < 600 ? "70vw" : 400;
   const logoHeight = screenSize.width < 600 ? 50 : (logoWidth as number) / 5.25;
 
   return (
