@@ -6,7 +6,7 @@ import { useGetScreenSize } from "hooks/useGetScreenSize";
 
 import styles from "./styles.module.css";
 
-export const LoadingScreen = () => {
+export default function LoadingScreen() {
   const { screenSize } = useGetScreenSize();
 
   const logoWidth = screenSize.width < 600 ? "70%" : 400;
@@ -19,4 +19,4 @@ export const LoadingScreen = () => {
       <Logo width={logoWidth} height={logoHeight} />
     </div>
   );
-};
+}

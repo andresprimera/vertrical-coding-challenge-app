@@ -5,8 +5,8 @@ import { StoreContext } from "context";
 
 import { MainContainer, BackButton, Header } from "components";
 
-import { MovieSectionSection } from "./MovieInfoSection";
-import { PictureSection } from "./PictureSection";
+import MovieSectionSection from "./MovieInfoSection";
+import PictureSection from "./PictureSection";
 
 import { ResponseUI } from "context/movies/interfaces";
 

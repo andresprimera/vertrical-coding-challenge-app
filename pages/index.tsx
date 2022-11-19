@@ -3,7 +3,7 @@ import { useEffect, useContext } from "react";
 import { StoreContext } from "context";
 import { handleFirstLoadFinished } from "context/movies/handlers";
 
-import { LoadingScreen } from "./Loading";
+import LoadingScreen from "./Loading";
 import HomeScreen from "./HomeScreen";
 
 export default function Home() {

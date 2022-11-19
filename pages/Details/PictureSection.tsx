@@ -5,11 +5,11 @@ import { ResponseUI } from "context/movies/interfaces";
 
 import styles from "./styles.module.css";
 
-export const PictureSection = ({
+export default function PictureSection({
   selectedMovie,
 }: {
   selectedMovie: ResponseUI;
-}) => {
+}) {
   return (
     <div className={styles.col1}>
       <Image
@@ -22,4 +22,4 @@ export const PictureSection = ({
       />
     </div>
   );
-};
+}

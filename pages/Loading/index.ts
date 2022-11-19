@@ -1,1 +1,3 @@
-export { LoadingScreen } from "./Loading";
+import LoadingScreen from "./Loading";
+
+export default LoadingScreen;

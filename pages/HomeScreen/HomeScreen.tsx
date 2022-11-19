@@ -5,7 +5,7 @@ import { StoreContext } from "context";
 
 import { SearchField, Header, MainContainer } from "components";
 
-import { SearchResults } from "./SearchResults";
+import SearchResults from "./SearchResults";
 
 import styles from "./styles.module.css";
 

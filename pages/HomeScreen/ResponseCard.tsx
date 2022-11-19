@@ -15,13 +15,13 @@ interface Props {
   index: number;
 }
 
-export const ResponseCard = ({
+export default function ResponseCard({
   photo,
   _id,
   title,
   shortDescription,
   index,
-}: Props) => {
+}: Props) {
   const loader = useCallback(() => {
     const pictureQuality = 20;
     return `${photo}?q=${pictureQuality}`;
@@ -51,4 +51,4 @@ export const ResponseCard = ({
       <ChevronRightIcon color={"var(--color-primary)"} />
     </div>
   );
-};
+}

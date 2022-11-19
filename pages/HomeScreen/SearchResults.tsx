@@ -1,12 +1,24 @@
 import React from "react";
 
-import { ResponseCard } from "./ResponseCard";
+import ResponseCard from "./ResponseCard";
 
 import { ResponseUI } from "context/movies/interfaces";
 
 import styles from "./styles.module.css";
 
-export const SearchResults = ({ movies }: { movies: ResponseUI[] | [] }) => {
+export default function SearchResults({
+  movies,
+}: {
+  movies: ResponseUI[] | [];
+}) {
+  if (!movies) {
+    return (
+      <div className={styles.noInfoContainer}>
+        <h3 className={styles.noInfoText}>There is no info to show</h3>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.searchResults}>
       {movies.length === 0 ? (
@@ -26,4 +38,4 @@ export const SearchResults = ({ movies }: { movies: ResponseUI[] | [] }) => {
       )}
     </div>
   );
-};
+}
