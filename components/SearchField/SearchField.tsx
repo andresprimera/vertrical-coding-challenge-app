@@ -3,7 +3,7 @@ import CloseIcon from "public/svgs/CloseIcon";
 
 import { StoreContext } from "context";
 
-import { handlePerformSearch } from "context/data/handlers";
+import { handlePerformSearch } from "context/movies/handlers";
 
 import { Button } from "./Button";
 
@@ -16,11 +16,11 @@ interface props {
 
 export const SearchField = ({ text, setText }: props) => {
   const [showDeleteButton, setShowDeleteButton] = useState(true);
-  const { dataDispatch } = useContext<any>(StoreContext);
+  const { moviesDispatch } = useContext<any>(StoreContext);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      handlePerformSearch(dataDispatch);
+      handlePerformSearch({ dispatch: moviesDispatch, query: text });
     }
   };
 
@@ -40,7 +40,11 @@ export const SearchField = ({ text, setText }: props) => {
       {showDeleteButton ? (
         <CloseIcon onClick={() => setText("")} style={{ marginRight: 10 }} />
       ) : null}
-      <Button onPress={() => handlePerformSearch(dataDispatch)} />
+      <Button
+        onPress={() =>
+          handlePerformSearch({ dispatch: moviesDispatch, query: text })
+        }
+      />
     </div>
   );
 };

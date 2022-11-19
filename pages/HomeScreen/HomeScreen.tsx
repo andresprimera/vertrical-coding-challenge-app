@@ -1,22 +1,21 @@
 import React, { useState, useRef, useContext } from "react";
+import Head from "next/head";
 
 import { StoreContext } from "context";
 
-import Head from "next/head";
-
 import { SearchField, Header, MainContainer } from "components";
 
-import styles from "./styles.module.css";
-import { useGetScreenSize } from "hooks/useGetScreenSize";
 import { SearchResults } from "./SearchResults";
+
+import styles from "./styles.module.css";
 
 export default function HomeScreen() {
   const [text, setText] = useState("");
   const element = useRef(null);
 
   const { state } = useContext<any>(StoreContext);
-  const { dataState } = state;
-  const { data } = dataState;
+  const { moviesState } = state;
+  const { movies } = moviesState;
 
   return (
     <div className={styles.container}>
@@ -33,11 +32,11 @@ export default function HomeScreen() {
         </div>
 
         <div className={styles.innerContainer}>
-          <h3 ref={element} style={{ alignSelf: "baseline", paddingLeft: 20 }}>
+          <h3 ref={element} className={styles.resultTitle}>
             Results
           </h3>
 
-          <SearchResults data={data} />
+          <SearchResults movies={movies} />
         </div>
       </MainContainer>
     </div>

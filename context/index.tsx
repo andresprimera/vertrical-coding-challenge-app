@@ -1,26 +1,29 @@
-import { createContext, useReducer, useEffect } from "react";
+import { createContext, useReducer } from "react";
 
-import dataReducer, { DATA_INITIAL_STATE } from "./data/reducer";
+import moviesReducer, { MOVIES_INITIAL_STATE } from "./movies/reducer";
 
 const StoreContext = createContext<{
-  state: { dataState: any };
-  dataDispatch: any;
+  state: { moviesState: any };
+  moviesDispatch: any;
 }>({
-  state: { dataState: null },
-  dataDispatch: null,
+  state: { moviesState: null },
+  moviesDispatch: null,
 });
 
 const StoreProvider = ({ children }: any) => {
-  const [dataState, dataDispatch] = useReducer(dataReducer, DATA_INITIAL_STATE);
+  const [moviesState, moviesDispatch] = useReducer(
+    moviesReducer,
+    MOVIES_INITIAL_STATE
+  );
 
   return (
     <StoreContext.Provider
       value={{
         state: {
-          dataState,
+          moviesState,
         },
 
-        dataDispatch,
+        moviesDispatch,
       }}
     >
       {children}

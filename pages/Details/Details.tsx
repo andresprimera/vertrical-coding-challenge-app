@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
-
 import { useRouter } from "next/router";
+
 import { StoreContext } from "context";
 
-import { ResponseUI } from "context/data/interfaces";
-
 import { MainContainer, BackButton, Header } from "components";
+
+import { MovieSectionSection } from "./MovieInfoSection";
+import { PictureSection } from "./PictureSection";
+
+import { ResponseUI } from "context/movies/interfaces";
 
 import styles from "./styles.module.css";
 
@@ -14,35 +17,32 @@ export default function DetailsScreen() {
   const selection = router.query.selection;
 
   const { state } = useContext(StoreContext);
-  const { dataState } = state;
-  const { data } = dataState;
+  const { moviesState } = state;
+  const { movies } = moviesState;
 
-  let selectedItem = data.find(
-    (element: ResponseUI) => element.id === selection
+  let selectedMovie = movies.find(
+    (movie: ResponseUI) => movie._id === selection
   );
 
-  const {
-    photo = "",
-    shortDescription = "",
-    title = "",
-    description = "",
-    id = "",
-  } = selectedItem;
-
   return (
-    <>
+    <div className={styles.container}>
       <Header />
       <BackButton />
       <MainContainer>
-        <div className={styles.container}>
-          <div className={styles.col1}>{photo}</div>
-          <div className={styles.col2}>
-            <h2 className={styles.title}>{title}</h2>
-            <p>{description}</p>
-          </div>
+        <div className={styles.innerContainer}>
+          {selectedMovie ? (
+            <>
+              <PictureSection selectedMovie={selectedMovie} />
+              <MovieSectionSection selectedMovie={selectedMovie} />
+            </>
+          ) : (
+            <div className={styles.movieNotFoundContainer}>
+              <h1>Movie not found</h1>
+            </div>
+          )}
         </div>
         <div className={styles.filler}>{""}</div>
       </MainContainer>
-    </>
+    </div>
   );
 }

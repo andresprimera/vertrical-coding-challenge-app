@@ -19,10 +19,15 @@
 .searchResults {
   display: flex;
   flex-direction: column;
-
   padding-top: 20px;
   overflow-y: scroll;
   height: 60vh;
+}
+
+.resultTitle {
+  align-self: baseline;
+  padding-left: 20px;
+  margin-bottom: 0;
 }
 
 .card {
@@ -39,11 +44,15 @@
 
 .cardTitle {
   color: var(--color-primary);
-  font-size: larger;
+  min-height: 2em;
+  vertical-align: bottom;
+  display: flex;
+  align-items: flex-end;
 }
 
 .cardDescription {
   margin-top: 6px;
+  min-height: 2em;
 }
 
 .col1 {
@@ -51,10 +60,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  height: 100%;
 }
 .col2 {
   flex: 8;
-  justify-content: center;
+  margin-left: 10px;
 }
 
 .noInfoContainer {
@@ -65,4 +76,19 @@
 }
 .noInfoText {
   color: var(--color-gray);
+}
+
+@media (max-width: 470px) {
+  .container {
+    padding: 0 15px;
+  }
+  .card {
+    margin: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .innerContainer {
+    flex: 4;
+  }
 }

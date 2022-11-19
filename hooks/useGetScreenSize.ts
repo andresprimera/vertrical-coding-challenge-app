@@ -6,11 +6,22 @@ export const useGetScreenSize = () => {
     height: 0,
   });
 
+  const [headerHeight, setHeaderHeight] = useState(80);
+
   useEffect(() => {
     function resize() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      if (width <= 600) {
+        setHeaderHeight(100);
+      } else {
+        setHeaderHeight(80);
+      }
+
       setScreenSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width,
+        height,
       });
     }
 
@@ -21,5 +32,5 @@ export const useGetScreenSize = () => {
     window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
   }, []);
-  return { screenSize };
+  return { screenSize, headerHeight };
 };

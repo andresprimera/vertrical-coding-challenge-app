@@ -1,21 +1,26 @@
 import React from "react";
-import Link from "next/link";
+
 import { ResponseCard } from "./ResponseCard";
+
+import { ResponseUI } from "context/movies/interfaces";
+
 import styles from "./styles.module.css";
 
-import { ResponseUI } from "context/data/interfaces";
-
-export const SearchResults = ({ data }: { data: ResponseUI[] | [] }) => {
+export const SearchResults = ({ movies }: { movies: ResponseUI[] | [] }) => {
   return (
     <div className={styles.searchResults}>
-      {data.length === 0 ? (
+      {movies.length === 0 ? (
         <div className={styles.noInfoContainer}>
           <h3 className={styles.noInfoText}>There is no info to show</h3>
         </div>
       ) : (
-        data.map((item, index) => {
+        movies.map((item, index) => {
           return (
-            <ResponseCard key={`${item.id}-${index}`} index={index} {...item} />
+            <ResponseCard
+              key={`${item._id}-${index}`}
+              index={index}
+              {...item}
+            />
           );
         })
       )}

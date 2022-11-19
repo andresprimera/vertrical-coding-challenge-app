@@ -4,14 +4,12 @@ import { useGetScreenSize } from "hooks/useGetScreenSize";
 
 import styles from "./styles.module.css";
 
-import { HEADER_HEIGHT } from "metrics";
-
 export const MainContainer = ({ children }: PropsWithChildren) => {
-  const { screenSize } = useGetScreenSize();
+  const { screenSize, headerHeight } = useGetScreenSize();
   return (
     <div
       className={styles.container}
-      style={{ height: screenSize.height - HEADER_HEIGHT }}
+      style={{ height: screenSize.height - headerHeight }}
     >
       {children}
     </div>
