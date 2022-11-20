@@ -7,7 +7,7 @@ import { StoreProvider } from "context";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <StoreProvider>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </StoreProvider>
   );
 }

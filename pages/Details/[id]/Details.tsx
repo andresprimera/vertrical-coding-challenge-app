@@ -11,6 +11,7 @@ import { MoviesStateUI, MovieUI } from "context/movies/interfaces";
 
 import styles from "./styles.module.css";
 import HomeLayout from "components/Layout";
+import { BackButton } from "components";
 
 export default function DetailsScreen() {
   const router = useRouter();
@@ -23,8 +24,9 @@ export default function DetailsScreen() {
   let selectedMovie = movies.find((movie: MovieUI) => movie._id === selection);
 
   return (
-    <HomeLayout backButton={true}>
+    <HomeLayout>
       <>
+        <BackButton />
         <motion.div
           initial={{ opacity: 0, translateX: 20 }}
           animate={{ opacity: 1, translateX: 0 }}

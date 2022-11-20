@@ -6,14 +6,7 @@ import { Header, MainContainer, BackButton } from "components";
 
 import styles from "./styles.module.css";
 
-interface props {
-  backButton?: boolean;
-}
-
-export default function HomeLayout({
-  children,
-  backButton,
-}: PropsWithChildren & props) {
+export default function HomeLayout({ children }: PropsWithChildren) {
   return (
     <div className={styles.container}>
       <Head>
@@ -22,7 +15,7 @@ export default function HomeLayout({
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Header />
-      {backButton && <BackButton />}
+
       <MainContainer>{children}</MainContainer>
     </div>
   );
