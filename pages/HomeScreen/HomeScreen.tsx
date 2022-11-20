@@ -1,5 +1,6 @@
 import React, { useState, useRef, useContext } from "react";
 import Head from "next/head";
+import { motion } from "framer-motion";
 
 import { StoreContext } from "context";
 
@@ -13,7 +14,6 @@ import styles from "./styles.module.css";
 import { MoviesStateUI, StoreUI } from "context/movies/interfaces";
 
 export default function HomeScreen() {
-  const [text, setText] = useState("");
   const element = useRef(null);
 
   const { state } = useContext<StoreUI>(StoreContext);
@@ -29,17 +29,27 @@ export default function HomeScreen() {
       </Head>
       <HomeLayout>
         <>
-          <div className={styles.searchSection}>
+          <motion.div
+            initial={{ opacity: 0, translateY: -20 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            transition={{ duration: 0.7 }}
+            className={styles.searchSection}
+          >
             <h3>{"Search Bar"}</h3>
-            <SearchField text={text} setText={setText} />
-          </div>
-          <div className={styles.innerContainer}>
+            <SearchField />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className={styles.innerContainer}
+          >
             <h3 ref={element} className={styles.resultTitle}>
               {"Results"}
             </h3>
 
             <SearchResults movies={movies} />
-          </div>
+          </motion.div>
         </>
       </HomeLayout>
     </div>

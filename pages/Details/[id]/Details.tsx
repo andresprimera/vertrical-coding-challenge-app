@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 
 import { StoreContext } from "context";
@@ -24,7 +25,12 @@ export default function DetailsScreen() {
   return (
     <HomeLayout backButton={true}>
       <>
-        <div className={styles.innerContainer}>
+        <motion.div
+          initial={{ opacity: 0, translateX: 20 }}
+          animate={{ opacity: 1, translateX: 0 }}
+          transition={{ duration: 0.7 }}
+          className={styles.innerContainer}
+        >
           {selectedMovie ? (
             <>
               <PictureSection selectedMovie={selectedMovie} />
@@ -35,7 +41,7 @@ export default function DetailsScreen() {
               <h1>Movie not found</h1>
             </div>
           )}
-        </div>
+        </motion.div>
         <div className={styles.filler}>{""}</div>
       </>
     </HomeLayout>

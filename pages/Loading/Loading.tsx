@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 import Logo from "../../assets/svgs/logo";
 
@@ -14,9 +15,27 @@ export default function LoadingScreen() {
 
   return (
     <div className={styles.container} style={{ height: screenSize.height }}>
-      <h1 className={styles.title}>Welcome</h1>
-      <h1 className={styles.title}>To</h1>
-      <Logo width={logoWidth} height={logoHeight} />
+      <motion.div
+        initial={{ opacity: 0, translateY: -20 }}
+        animate={{ opacity: 1, translateY: 0 }}
+        transition={{ duration: 0.7 }}
+      >
+        <h1 className={styles.title}>Welcome</h1>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, translateY: -20 }}
+        animate={{ opacity: 1, translateY: 0 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+      >
+        <h1 className={styles.title}>To</h1>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, translateY: -20 }}
+        animate={{ opacity: 1, translateY: 0 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+      >
+        <Logo width={logoWidth} height={logoHeight} />
+      </motion.div>
     </div>
   );
 }

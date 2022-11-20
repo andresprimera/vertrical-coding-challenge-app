@@ -16,7 +16,7 @@ export default function Home() {
     if (firstLoad) {
       setTimeout(() => {
         handleFirstLoadFinished(moviesDispatch as React.Dispatch<DispatchUI>);
-      }, 1500);
+      }, 1800);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firstLoad]);

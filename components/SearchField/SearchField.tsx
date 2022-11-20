@@ -1,32 +1,45 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
 import CloseIcon from "assets/svgs/CloseIcon";
 
 import { StoreContext } from "context";
 
-import { handlePerformSearch } from "context/movies/handlers";
+import {
+  handlePerformSearch,
+  handleClearFields,
+} from "context/movies/handlers";
 
 import { Button } from "./Button";
 
 import styles from "./styles.module.css";
 import { DispatchUI, StoreUI } from "context/movies/interfaces";
 
-interface props {
-  text: string;
-  setText: React.Dispatch<React.SetStateAction<string>>;
-}
-
-export const SearchField = ({ text, setText }: props) => {
+export const SearchField = () => {
+  const [text, setText] = useState("");
   const [showDeleteButton, setShowDeleteButton] = useState(true);
   const { moviesDispatch } = useContext<StoreUI>(StoreContext);
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
-      handlePerformSearch({
-        dispatch: moviesDispatch as React.Dispatch<DispatchUI>,
-        query: text,
-      });
-    }
-  };
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      switch (e.key) {
+        case "Enter":
+          handlePerformSearch({
+            dispatch: moviesDispatch as React.Dispatch<DispatchUI>,
+            query: text,
+          });
+          break;
+
+        case "Backspace":
+          handleClearFields(moviesDispatch as React.Dispatch<DispatchUI>);
+          break;
+      }
+    },
+    [moviesDispatch, text]
+  );
+
+  const clearfields = useCallback(() => {
+    handleClearFields(moviesDispatch as React.Dispatch<DispatchUI>);
+    setText("");
+  }, [moviesDispatch]);
 
   useEffect(() => {
     setShowDeleteButton(text !== "");
@@ -38,11 +51,13 @@ export const SearchField = ({ text, setText }: props) => {
         type="text"
         value={text}
         className={styles.input}
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
         onKeyDown={(e) => handleKeyDown(e)}
       ></input>
       {showDeleteButton ? (
-        <CloseIcon onClick={() => setText("")} style={{ marginRight: 10 }} />
+        <CloseIcon onClick={() => clearfields()} style={{ marginRight: 10 }} />
       ) : null}
       <Button
         onPress={() =>

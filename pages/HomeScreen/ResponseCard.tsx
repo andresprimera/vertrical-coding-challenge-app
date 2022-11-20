@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 import Image from "next/image";
@@ -29,7 +30,12 @@ export default function ResponseCard({
   }, []);
 
   return (
-    <div className={styles.card}>
+    <motion.div
+      initial={{ opacity: 0, translateY: 10 }}
+      animate={{ opacity: 1, translateY: 0 }}
+      transition={{ duration: 0.7 }}
+      className={styles.card}
+    >
       {/***FIRST COL 20% WIDTH */}
       <div className={styles.col1}>
         <Image
@@ -49,6 +55,6 @@ export default function ResponseCard({
         <p className={styles.cardDescription}>{shortDescription}</p>
       </div>
       <ChevronRightIcon color={"var(--color-primary)"} />
-    </div>
+    </motion.div>
   );
 }
